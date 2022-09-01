@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Kavramlar</h3>
+<hr>
+
+{% if kavramlar %}
+
+<ul class="list-group">
+   {% for kavram in kavramlar %}
+   <li class = "list-group-item">{{kavram.title}}
+   <p class="mb-1">{{kavram.content|safe}}</p>
+   </li>
+   
+   {% endfor %}
+</ul>
+{% else %}
+<div class = "alert alert-danger">Bu blokta henüz kavram bulunmuyor...</div>
+{% endif %}
+
+{% endblock body %}

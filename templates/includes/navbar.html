@@ -1,0 +1,42 @@
+<nav class="nnavbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li>
+          <a class="navbar-brand" href="/">Ana Sayfa</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/makaleler">Makaleler ve Haberler</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/kavramlar">Kavramlar</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+
+          {% if session["girildi"] %}
+          <li class="nav-item active">
+              <a class="nav-link" href="/panel">Kontrol Paneli</a>
+            </li>  
+          <li class="nav-item active">
+              <a class="nav-link" href="/cikis">Çıkış Yap</a>
+            </li>
+            
+          {% else %}
+          <li class="nav-item active">
+              <a class="nav-link" href="/giris">Giriş Yap</a>
+            </li>
+
+          {% endif %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="/kayitol">Kayıt Olun</a>
+          </li>
+        
+        </ul>
+    </div>
+</nav>
+{% block body %}
+
+{% endblock body %}
+

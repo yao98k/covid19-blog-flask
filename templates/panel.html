@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h3>Kontrol Paneli</h3>
+<small>Hoşgeldin, {{session["username"]}}</small>
+<hr>
+
+<a href="/mekle" class = "btn btn-danger">Makale Ekle</a>
+<a href="/kekle" class = "btn btn-danger">Kavram Ekle</a>
+{% if articles %}
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Tarih</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for article in articles %}
+      <tr>
+        <th scope="row">{{article.id}}</th>
+        <td><a href="/makale/{{article.id}}">{{article.title}}</a></td>
+        <td>{{article.author}}</td>
+        <td>{{article.created_date}}</td>
+        <td><a href="/guncelle/{{article.id}}" class = "btn btn-danger">Güncelle</a></td>
+        <td><a href="/sil/{{article.id}}" class = "btn btn-danger">Sil</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>  
+{% else %}
+<div class = "alert alert-danger">Henüz makaleniz bulunmuyor...</div>
+{% endif %}
+
+
+{% if kavramlar %}
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Kavram</th>
+        <th scope="col">&nbsp</th>
+        <th scope="col">&nbsp</th>
+        <th scope="col">&nbsp</th>
+        <th scope="col">&nbsp</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for kavram in kavramlar %}
+      <tr>
+        <th scope="row">{{kavram.id}}</th>
+        <td><a href="/kavramlar">{{kavram.title}}</a></td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+        <td><a href="/kguncelle/{{kavram.id}}" class = "btn btn-danger">Güncelle</a></td>
+        <td><a href="/ksil/{{kavram.id}}" class = "btn btn-danger">Sil</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>  
+{% else %}
+<div class = "alert alert-danger">Henüz kavram bulunmuyor</div>
+{% endif %}
+{% endblock body %}
+
+
+
